@@ -1,0 +1,22 @@
+{
+  "author" : "Bohemian Coding",
+  "commands" : [
+    {
+      "script" : "script.cocoascript",
+      "handler" : "createSymbol",
+      "shortcut" : "shift command u",
+      "name" : "Update with Symbol",
+      "identifier" : "createsymbol"
+    }
+  ],
+  "menu": {
+    "isRoot": true,
+    "items": [
+      "createsymbol"
+    ]
+  },
+  "identifier" : "com.websiddu.sketch-symbol-me",
+  "version" : "1.1",
+  "description" : "Create symbols from same named layer groups.",
+  "name" : "Update with symbol"
+}

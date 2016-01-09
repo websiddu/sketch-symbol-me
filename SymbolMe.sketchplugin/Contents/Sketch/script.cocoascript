@@ -1,0 +1,65 @@
+// Display an error alert
+function alert(msg, title) {
+  title = title || "alert"
+  var app = [NSApplication sharedApplication]
+  [app displayDialog:msg withTitle:title]
+}
+
+// Display an error alert and exit
+function exitWithAlert(message, title) {
+  // alert(message, title)
+  throw(nil) // exit the plugin
+}
+
+var createSymbol = function(context) {
+  try {
+    // Begin validation of selection
+
+    // Ensure at least one layer is selected
+    var selection = context.selection
+    // Ensure at least one layer is selected
+    if ([selection count] < 1) {
+      exitWithAlert('Select at least one layer to create a symbol.', 'Select Layer(s)')
+    }
+
+    var layer = [selection objectAtIndex:0]
+
+    // Layer is already a symbol
+    if (layer.isSymbol()) {
+      exitWithAlert('This layer is already a symbol.', 'Already Symbol')
+    }
+
+    var doc = context.document
+    var page = [doc currentPage];
+    var layers = [page children];
+
+    var symbols = doc.documentData().layerSymbols()
+
+    if (layer instanceof MSLayerGroup) { // Layer is already a group
+
+      // Add group to symbols
+      var symbol = symbols.addSymbolWithName_firstInstance(layer.name(), layer)
+      var count = 0
+
+      for(var i = 0; i < [layers count]; i++) {
+        var thisLayer = layers[i];
+        if(thisLayer.name() == layer.name()) {
+          symbol.registerInstance(layers.objectAtIndex(i));
+          layers.objectAtIndex(i).setName(symbol.name());
+          count = count + 1;
+        }
+
+      }
+
+      doc.showMessage("Converted " + count + " layers to symbols.")
+
+      // Toggle selection to refresh UI
+      layer.setIsSelected(false)
+      layer.setIsSelected(true)
+
+    }
+
+  } catch(e) {
+    log(e)
+  }
+};
