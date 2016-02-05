@@ -1,7 +1,7 @@
 # Symbol me
 
 This plug-in will convert the select layer to a symbol and updates all the other
-layers with same name with symbol just created.
+layers with same styles and same layers with symbol just created.
 
 This is really helpful when you want to covert a bunch of scattered (nested deep down and its painful to select all of them one by one) layers to symbols.
 
@@ -25,6 +25,15 @@ Option 1:
 
 Option 2:
   While Sketch 3 is open, go to Plugins -> Reveal Plugins Folder, and place SymbolMe.sketchplugin there.
+
+# Changelog
+
+v 1.1.1
+- Coverts the layer groups to symbols based on style and matches
+
+v 1.1.0
+- Convers layer groups to symbols based on the name of the layer
+
 
 # License
 It's free for whatever use ( commercial or personal ), both for web or for printing purpose. Licensed under MIT.
