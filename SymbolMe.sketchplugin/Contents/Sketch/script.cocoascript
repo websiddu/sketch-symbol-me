@@ -33,22 +33,22 @@ var createSymbol = function(context) {
     var page = [doc currentPage];
     var layers = [page children];
 
+
     var symbols = doc.documentData().layerSymbols()
 
     if (layer instanceof MSLayerGroup) { // Layer is already a group
 
       // Add group to symbols
+      var predicate = [NSPredicate predicateWithFormat:@"(FUNCTION(self, 'isEqualForSync:asPartOfSymbol:', %@, nil) == YES)", [selection objectAtIndex:0]]
+      var selectedLayers =  [layers filteredArrayUsingPredicate:predicate];
+
       var symbol = symbols.addSymbolWithName_firstInstance(layer.name(), layer)
       var count = 0
 
-      for(var i = 0; i < [layers count]; i++) {
-        var thisLayer = layers[i];
-        if(thisLayer.name() == layer.name()) {
-          symbol.registerInstance(layers.objectAtIndex(i));
-          layers.objectAtIndex(i).setName(symbol.name());
-          count = count + 1;
-        }
-
+      for(var i = 0; i < [selectedLayers count]; i++) {
+        symbol.registerInstance(selectedLayers.objectAtIndex(i));
+        selectedLayers.objectAtIndex(i).setName(symbol.name());
+        count = count + 1;
       }
 
       doc.showMessage("Converted " + count + " layers to symbols.")

@@ -26,5 +26,14 @@ Option 1:
 Option 2:
   While Sketch 3 is open, go to Plugins -> Reveal Plugins Folder, and place SymbolMe.sketchplugin there.
 
+Changelog
+
+v 1.1.1
+- Coverts the layer groups to symbols based on style and matches
+
+v 1.1.0
+- Convers layer groups to symbols based on the name of the layer
+
+
 # License
 It's free for whatever use ( commercial or personal ), both for web or for printing purpose. Licensed under MIT.

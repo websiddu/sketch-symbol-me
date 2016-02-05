@@ -1,5 +1,5 @@
 {
-  "author" : "Bohemian Coding",
+  "author" : "Siddhartha Gudipati",
   "commands" : [
     {
       "script" : "script.cocoascript",
@@ -16,7 +16,7 @@
     ]
   },
   "identifier" : "com.websiddu.sketch-symbol-me",
-  "version" : "1.1",
+  "version" : "1.1.1",
   "description" : "Create symbols from same named layer groups.",
   "name" : "Update with symbol"
 }
